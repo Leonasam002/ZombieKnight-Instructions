@@ -70,8 +70,10 @@ for row in range(len(tile_map)):
             Portal(x, y, "purple", my_portal_group)
         elif cell == 9:
             my_player = Player(x - 32, y + 32, my_platform_group, my_portal_group, my_bullet_group)
-            # noinspection PyTypeChecker
-            my_player_group.add(my_bullet_group)
+            my_player_group.add(my_player)
+
+if my_player is None:
+    raise RuntimeError("No player start position found in tile_map. Add a tile with value 9.")
 
 #Load in a background image (we must resize)
 background_image = pygame.transform.scale(pygame.image.load("images/background.png"), (1280, 736))
